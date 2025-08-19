@@ -54,6 +54,8 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
           defaultColor: Colors.blue,
           importance: NotificationImportance.High,
           channelShowBadge: true,
+          playSound: true,
+          soundSource: 'resource://raw/adhan', // <-- Your custom adhan sound
         ),
       ],
       debug: true,
@@ -141,6 +143,15 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
 
   Future<void> _schedulePrayerNotifications(Map<String, DateTime> times) async {
     int id = 2000; // start from 2000 to avoid collision with test notification
+
+    // Get local time zone safely
+    String? localTimeZone;
+    try {
+      localTimeZone = await AwesomeNotifications().getLocalTimeZoneIdentifier();
+    } catch (_) {
+      localTimeZone = null;
+    }
+
     for (var prayer in times.keys) {
       final time = times[prayer];
       if (time!.isAfter(DateTime.now())) {
@@ -161,7 +172,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
               minute: time.minute,
               second: time.second,
               preciseAlarm: true,
-              timeZone: AwesomeNotifications.localTimeZoneIdentifier,
+              timeZone: localTimeZone, // use the fetched local time zone
             ),
           );
         } catch (e) {
@@ -387,6 +398,12 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
                 await AwesomeNotifications().requestPermissionToSendNotifications();
               }
               DateTime now = DateTime.now().add(Duration(seconds: 30));
+              String? localTimeZone;
+              try {
+                localTimeZone = await AwesomeNotifications().getLocalTimeZoneIdentifier();
+              } catch (_) {
+                localTimeZone = null;
+              }
               await AwesomeNotifications().createNotification(
                 content: NotificationContent(
                   id: 1001,
@@ -403,7 +420,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen> {
                   minute: now.minute,
                   second: now.second,
                   preciseAlarm: true,
-                  timeZone: AwesomeNotifications.localTimeZoneIdentifier,
+                  timeZone: localTimeZone,
                 ),
               );
               ScaffoldMessenger.of(context).showSnackBar(

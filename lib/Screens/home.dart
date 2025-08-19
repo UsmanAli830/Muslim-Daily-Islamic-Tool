@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:muslim_daily/Screens/Prayer_screen.dart';
+import 'package:muslim_daily/Screens/dailyhadith.dart';
+import 'package:muslim_daily/Screens/dua_collection.dart';
+import 'package:muslim_daily/Screens/islamicnames.dart';
 import 'package:muslim_daily/Screens/mosques.dart';
 import 'package:muslim_daily/Screens/qibla.dart';
 import 'package:muslim_daily/Screens/tasbeeh.dart';
+import 'package:muslim_daily/Screens/zakatcalculator.dart';
 import 'package:muslim_daily/Services/location_permission.dart';
 import 'calender.dart';
 
@@ -38,7 +42,37 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
 
-                const SizedBox(height: 30),
+                const SizedBox(height: 12),
+
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => HadithPage()),
+                    );
+                  },
+                  child: Card(
+                    color: Colors.white,
+                    elevation: 8,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Padding(
+                      padding:
+                      EdgeInsets.symmetric(horizontal: 60, vertical: 20),
+                      child: Text(
+                        'Daily Hadith',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.blue[800],
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 12),
 
                 // 📅 Calendar Button
                 GestureDetector(
@@ -57,7 +91,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     child: Padding(
                       padding:
-                      EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+                      EdgeInsets.symmetric(horizontal: 60, vertical: 20),
                       child: Text(
                         'Calendar',
                         style: TextStyle(
@@ -69,7 +103,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 12),
                 GestureDetector(
                   onTap: () {
                     Navigator.push(
@@ -86,7 +120,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     child: Padding(
                       padding:
-                      EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+                      EdgeInsets.symmetric(horizontal: 60, vertical: 20),
                       child: Text(
                         'Find qibla',
                         style: TextStyle(
@@ -98,7 +132,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 12),
                 GestureDetector(
                   onTap: () {
                     Navigator.push(
@@ -115,7 +149,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     child: Padding(
                       padding:
-                      EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+                      EdgeInsets.symmetric(horizontal: 66, vertical: 20),
                       child: Text(
                         'Tasbeeh',
                         style: TextStyle(
@@ -127,7 +161,98 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 12),
+
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => IslamicNamesScreen()),
+                    );
+                  },
+                  child: Card(
+                    color: Colors.white,
+                    elevation: 8,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Padding(
+                      padding:
+                      EdgeInsets.symmetric(horizontal: 42, vertical: 20),
+                      child: Text(
+                        'Islamic names',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.blue[800],
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 12),
+
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => DuaCollectionScreen()),
+                    );
+                  },
+                  child: Card(
+                    color: Colors.white,
+                    elevation: 8,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Padding(
+                      padding:
+                      EdgeInsets.symmetric(horizontal: 42, vertical: 20),
+                      child: Text(
+                        'Dua Collection',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.blue[800],
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 12),
+
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ZakatCalculator()),
+                    );
+                  },
+                  child: Card(
+                    color: Colors.white,
+                    elevation: 8,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Padding(
+                      padding:
+                      EdgeInsets.symmetric(horizontal: 36, vertical: 20),
+                      child: Text(
+                        'Zakat Calculator',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.blue[800],
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 12),
+
                 GestureDetector(
                   onTap: () {
                     Navigator.push(
@@ -144,7 +269,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     child: Padding(
                       padding:
-                      EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+                      EdgeInsets.symmetric(horizontal: 50, vertical: 20),
                       child: Text(
                         'Prayer Times',
                         style: TextStyle(
@@ -156,7 +281,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 12),
                 GestureDetector(
                   onTap: () {
                     Navigator.push(
@@ -173,7 +298,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     child: Padding(
                       padding:
-                      EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+                      EdgeInsets.symmetric(horizontal: 36, vertical: 20),
                       child: Text(
                         'Nearby Mosques',
                         style: TextStyle(
